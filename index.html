@@ -334,8 +334,7 @@
         .append("option")
         .attr("value", (d) => d)
         .text((d) => d);
-    });
-    let barMargin = { top: 60, right: 400, bottom: 200, left: 100 };
+    }); let barMargin = { top: 60, right: 400, bottom: 200, left: 100 };
     let barWidth = 900 - barMargin.left - barMargin.right;
     let barHeight = 600 - barMargin.top - barMargin.bottom;
     let barSvg = d3.select("body").append("svg")
@@ -344,7 +343,7 @@
       .append("g")
       .attr("transform", "translate(" + barMargin.left + "," + barMargin.top + ")");
 
-    let colorScale1 = d3.scaleOrdinal(d3.schemeCategory10);
+    let colorScale = d3.scaleOrdinal(d3.schemeCategory10);
     d3.dsv(";", "Best Songs on Spotify from 2000-2023.csv", function (d) {
       return {
         year: +d['year'],
@@ -391,10 +390,9 @@
       bars.on("mouseover", function (event, d) {
         let genre = d[0];
         let count = genreCounts.get(genre);
-        let filteredData = songsByGenre.get(genre).filter(song => song.year >= 2000);
         let percentage = ((count / totalSongs) * 100).toFixed(2); // Calculate the percentage
 
-        // Summarize year counts in a more concise manner
+        let filteredData = songsByGenre.get(genre).filter(song => song.year >= 2000);
         let yearCounts = Array.from(filteredData).reduce((acc, curr) => {
           acc[curr.year] = (acc[curr.year] || 0) + 1;
           return acc;
@@ -430,7 +428,7 @@
       barSvg.append("text")
         .attr("transform", "translate(" + (barWidth / 2) + " ," + (barHeight + barMargin.bottom / 4) + ")")
         .style("text-anchor", "middle")
-        .text("Top Genres");
+        .text("Top Genres from 2000-2023");
 
       barSvg.append("g")
         .call(d3.axisLeft(y).tickFormat(d => d + "%"));
@@ -453,7 +451,7 @@
           .attr("y", index * 20)
           .attr("width", 18)
           .attr("height", 18)
-          .style("fill", colorScale1(genre[0]));
+          .style("fill", colorScale(genre[0]));
 
         legend.append("text")
           .attr("x", 22)
@@ -463,6 +461,10 @@
 
       });
     });
+
+
+
+
 
 
 
