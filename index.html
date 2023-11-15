@@ -404,7 +404,7 @@
           .map(([year, songCount]) => `${year}: ${songCount} songs`)
           .join(", ");
 
-        let tooltipContent = `Genre: ${genre} has ${count} songs (${percentage}% of total) from 2000 to 2023. Top years: ${yearCountsSummary}.`;
+        let tooltipContent = `Genre ${genre} has ${count} songs (${percentage}% of total) from 2000 to 2023. Top years: ${yearCountsSummary}.`;
 
         tooltip.html(tooltipContent)
           .style("left", (event.pageX + 10) + "px")
