@@ -428,7 +428,7 @@
       barSvg.append("text")
         .attr("transform", "translate(" + (barWidth / 2) + " ," + (barHeight + barMargin.bottom / 4) + ")")
         .style("text-anchor", "middle")
-        .text("Top Genres from 2000-2023");
+        .text("Top Genres");
 
       barSvg.append("g")
         .call(d3.axisLeft(y).tickFormat(d => d + "%"));
