@@ -444,7 +444,12 @@
       let legend = barSvg.append("g")
         .attr("class", "legend")
         .attr("transform", `translate(${barWidth + 20}, ${30})`);
-
+      legend.append("text")
+        .attr("x", 0)
+        .attr("y", -10) // Position the label above the first legend item
+        .style("font-size", "16px")
+        .style("font-family", "Quicksand, sans-serif")
+        .text("Genre Types:");
       sortedGenres.forEach((genre, index) => {
         legend.append("rect")
           .attr("x", 0)
@@ -461,13 +466,6 @@
 
       });
     });
-
-
-
-
-
-
-
 
 
   </script>
