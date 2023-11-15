@@ -386,7 +386,7 @@
         .attr("y", -20) // Adjust the y position for the title
         .attr("text-anchor", "middle")
         .style("font-size", "20px")
-        .text("Top Genres from 2000-2023");
+        .text("Top Genres on Spotify from 2000-2023");
       bars.on("mouseover", function (event, d) {
         let genre = d[0];
         let count = genreCounts.get(genre);
